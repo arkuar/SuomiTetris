@@ -8,10 +8,15 @@ public enum Tetrominoes {
     L(new int[][]{{-1, 0}, {0, 0}, {1, 0}, {-1, 1}}),
     S(new int[][]{{-1, 0}, {0, 0}, {0, -1}, {1, -1}}),
     Z(new int[][]{{-1, 1}, {0, -1}, {0, 0}, {1, 0}});
-
+    
+    //Sisältää tetrominon koordinaatit.
     public int[][] coordinates;
 
     Tetrominoes(int[][] coordinates) {
         this.coordinates = coordinates;
+    }
+    
+    public int[][] getCoords() {
+        return this.coordinates;
     }
 }
