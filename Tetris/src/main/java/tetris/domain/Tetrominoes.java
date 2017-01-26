@@ -7,15 +7,16 @@ public enum Tetrominoes {
     J(new int[][]{{-1, 0}, {0, 0}, {1, 0}, {1, 1}}),
     L(new int[][]{{-1, 0}, {0, 0}, {1, 0}, {-1, 1}}),
     S(new int[][]{{-1, 0}, {0, 0}, {0, -1}, {1, -1}}),
-    Z(new int[][]{{-1, 1}, {0, -1}, {0, 0}, {1, 0}});
+    Z(new int[][]{{-1, -1}, {0, -1}, {0, 0}, {1, 0}}),
+    EMPTY(new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}});
     
-    //Sisältää tetrominon koordinaatit.
+    //Sisältää tetrominon alkuperäiset koordinaatit. EI SAA MUUTTAA!
     public int[][] coordinates;
 
     Tetrominoes(int[][] coordinates) {
         this.coordinates = coordinates;
     }
-    
+
     public int[][] getCoords() {
         return this.coordinates;
     }
