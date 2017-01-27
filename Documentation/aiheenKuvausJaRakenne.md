@@ -13,3 +13,7 @@ Pelaaja
 - highscore -taulukon katsominen
 - nimimerkin lisääminen highscore -taulukkoon
  * onnistuu jos käyttäjä on saanut pisteitä tarpeeksi
+ 
+**Luokkakaavio**
+
+![Luokkakaavio](/Documentation/classdiagram.png)
