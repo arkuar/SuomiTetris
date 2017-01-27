@@ -4,4 +4,5 @@ Päivä | Tunnit | Kuvaus
 17.01.2017 | 2h | Aiheen suunnittelua, repon luonti ja gitin kertausta.
 23.01.2017 | 2h | Toteutuksen suunnitelua ja tetrispalikoiden luokan luonti
 26.01.2017 | 3h | Palikoiden luokan suunnittelu ja toteutus, testien tekeminen, pit ja checkstyle tehty
+27.01.2017 | 2h | Luokkakaavion luonti
 ... | ... | ...
