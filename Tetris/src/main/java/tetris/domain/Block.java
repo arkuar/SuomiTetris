@@ -27,8 +27,16 @@ public class Block {
         currentCoords[i][0] = x;
     }
 
+    public int getX(int i) {
+        return currentCoords[i][0];
+    }
+
     public void setY(int i, int y) {
         currentCoords[i][1] = y;
+    }
+
+    public int getY(int i) {
+        return currentCoords[i][1];
     }
 
     public void rotateLeft() {
