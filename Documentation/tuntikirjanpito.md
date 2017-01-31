@@ -5,4 +5,5 @@ Päivä | Tunnit | Kuvaus
 23.01.2017 | 2h | Toteutuksen suunnitelua ja tetrispalikoiden luokan luonti
 26.01.2017 | 3h | Palikoiden luokan suunnittelu ja toteutus, testien tekeminen, pit ja checkstyle tehty
 27.01.2017 | 2h | Luokkakaavion luonti
+31.01.2017 | 2h | Lisätty pelilaudalle oma luokka joka sisältää liikkumismetodit palikoille
 ... | ... | ...
