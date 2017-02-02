@@ -21,15 +21,15 @@ public class GameBoard {
         this.posY = height - 2;
         this.random = new Random();
     }
-    
+
     public int getHeight() {
         return this.height;
     }
-    
+
     public int getWidth() {
         return this.width;
     }
-    
+
     public boolean[][] getBoard() {
         return this.board;
     }
@@ -90,14 +90,35 @@ public class GameBoard {
     public Block createRandom() {
         int i = random.nextInt(7);
         Block created = new Block(Tetrominoes.values()[i]);
+        this.posX = width / 2;
+        this.posY = height - 2;
         return created;
     }
-    
+
     public void blockStopped(Block block) {
         for (int i = 0; i < 4; i++) {
             int x = posX + block.getX(i);
             int y = posY - block.getY(i);
-            board[x][y] = true;
+            board[y][x] = true;
+        }
+    }
+
+    private boolean lineIsFull(int i) {
+        for (int j = 0; j < width; j++) {
+            if (board[i][j] == false) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void removeLine() {
+        for (int i = 0; i < height; i++) {
+            if (lineIsFull(i)) {
+                for (int k = 0; k < width; k++) {
+                    board[i][k] = false;
+                }
+            }
         }
     }
 }
