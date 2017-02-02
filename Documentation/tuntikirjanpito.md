@@ -7,4 +7,5 @@ Päivä | Tunnit | Kuvaus
 27.01.2017 | 2h | Luokkakaavion luonti
 31.01.2017 | 2h | Lisätty pelilaudalle oma luokka joka sisältää liikkumismetodit palikoille
 01.02.2017 | 1h | Pelilaudalle lisätty metodeja ja testejä
+02.02.2017 | 1h | Pelilogiikkaan lisäyksiä ja testejä
 ... | ... | ...
