@@ -6,4 +6,5 @@ Päivä | Tunnit | Kuvaus
 26.01.2017 | 3h | Palikoiden luokan suunnittelu ja toteutus, testien tekeminen, pit ja checkstyle tehty
 27.01.2017 | 2h | Luokkakaavion luonti
 31.01.2017 | 2h | Lisätty pelilaudalle oma luokka joka sisältää liikkumismetodit palikoille
+01.02.2017 | 1h | Pelilaudalle lisätty metodeja ja testejä
 ... | ... | ...
