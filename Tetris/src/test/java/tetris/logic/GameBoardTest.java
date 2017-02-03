@@ -5,6 +5,7 @@
  */
 package tetris.logic;
 
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -66,8 +67,20 @@ public class GameBoardTest {
 
     @Test
     public void movingWorks2() {
-        boolean result = b.canMove(-1, 23);
+        boolean result = b.canMove(10, 5);
         assertEquals(false, result);
+    }
+
+    @Test
+    public void movingWorks3() {
+        boolean result = b.canMove(5, 10);
+        assertEquals(false, result);
+    }
+
+    @Test
+    public void movingToZero() {
+        boolean result = b.canMove(0, 0);
+        assertEquals(true, result);
     }
 
     @Test
@@ -77,15 +90,64 @@ public class GameBoardTest {
     }
 
     @Test
+    public void movingDownWorks2() {
+        b.moveDown(c);
+        b.moveDown(c);
+        b.moveDown(c);
+        b.moveDown(c);
+        b.moveDown(c);
+        b.moveDown(c);
+        b.moveDown(c);
+        assertEquals(2, b.getY());
+    }
+
+    @Test
     public void movingLeftWorks() {
         b.moveLeft(c);
         assertEquals(4, b.getX());
     }
 
     @Test
+    public void movingLeftWorks2() {
+        b.moveLeft(c);
+        b.moveLeft(c);
+        b.moveLeft(c);
+        b.moveLeft(c);
+        b.moveLeft(c);
+        assertEquals(0, b.getX());
+    }
+
+    @Test
+    public void movingLeftNotNegative() {
+        for (int i = 0; i < 7; i++) {
+            b.moveLeft(c);
+        }
+        assertEquals(0, b.getX());
+    }
+
+    @Test
     public void movingRightWorks() {
         b.moveRight(c);
         assertEquals(6, b.getX());
+    }
+
+    @Test
+    public void movingRightWorks2() {
+        b.moveRight(c);
+        b.moveRight(c);
+        b.moveRight(c);
+        b.moveRight(c);
+        b.moveRight(c);
+        assertEquals(9, b.getX());
+    }
+
+    @Test
+    public void randomCreateWorks() {
+        Block e = b.createRandom();
+        assertNotEquals(e, Tetrominoes.EMPTY);
+        assertEquals(5, b.getX());
+        assertEquals(8, b.getY());
+        assertEquals(e.getClass(), c.getClass());
     }
 
     @Test
@@ -97,23 +159,33 @@ public class GameBoardTest {
         assertEquals(true, board[7][5]);
         assertEquals(true, board[6][5]);
     }
-    
+
     @Test
     public void cantMoveWhenBlocked() {
         b.blockStopped(c);
         boolean result = b.canMove(5, 9);
         assertEquals(false, result);
     }
-    
+
     @Test
     public void removeFullLine() {
         for (int i = 0; i < 10; i++) {
             b.getBoard()[0][i] = true;
         }
-        
+
         b.removeLine();
         for (int i = 0; i < 10; i++) {
-            assertEquals(b.getBoard()[0][i], false);   
+            assertEquals(b.getBoard()[0][i], false);
+        }
+    }
+
+    @Test
+    public void lineFullCheck() {
+        b.removeLine();
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                assertEquals(false, b.getBoard()[i][j]);
+            }
         }
     }
 }

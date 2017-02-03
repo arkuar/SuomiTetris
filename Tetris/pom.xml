@@ -37,9 +37,11 @@
                 <configuration>
                     <targetClasses>
                         <param>tetris.domain.*</param>
+                        <param>tetris.logic.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>tetris.domain.*</param>
+                        <param>tetris.logic.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
