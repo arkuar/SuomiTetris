@@ -8,4 +8,5 @@ Päivä | Tunnit | Kuvaus
 31.01.2017 | 2h | Lisätty pelilaudalle oma luokka joka sisältää liikkumismetodit palikoille
 01.02.2017 | 1h | Pelilaudalle lisätty metodeja ja testejä
 02.02.2017 | 1h | Pelilogiikkaan lisäyksiä ja testejä
+03.03.2017 | 2h | Lisää testejä sekä pit ja checkstyle raportit. Luokkakaavion päivitys.
 ... | ... | ...
