@@ -118,6 +118,15 @@ public class GameBoardTest {
     }
 
     @Test
+    public void movingLeftWorksWithDifferentBlock() {
+        Block a = new Block(Tetrominoes.O);
+        for (int i = 0; i < 5; i++) {
+            b.moveLeft(a);
+        }
+        assertEquals(0, b.getX());
+    }
+
+    @Test
     public void movingLeftNotNegative() {
         for (int i = 0; i < 7; i++) {
             b.moveLeft(c);
@@ -139,6 +148,15 @@ public class GameBoardTest {
         b.moveRight(c);
         b.moveRight(c);
         assertEquals(9, b.getX());
+    }
+
+    @Test
+    public void movingRightWorksWithDifferentBlock() {
+        Block a = new Block(Tetrominoes.O);
+        for (int i = 0; i < 5; i++) {
+            b.moveRight(a);
+        }
+        assertEquals(8, b.getX());
     }
 
     @Test

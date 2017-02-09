@@ -19,8 +19,6 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        GameBoard b = new GameBoard(10, 10);
-        Block c = new Block(Tetrominoes.I);
     }
 
 }
