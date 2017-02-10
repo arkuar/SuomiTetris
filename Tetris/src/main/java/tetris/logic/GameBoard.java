@@ -1,5 +1,6 @@
 package tetris.logic;
 
+import java.awt.Color;
 import java.util.Random;
 import tetris.domain.Block;
 import tetris.domain.Tetrominoes;
@@ -10,8 +11,10 @@ public class GameBoard {
     private final int width;
     private int posX;
     private int posY;
-    private boolean[][] board;
+    public boolean[][] board;
     private Random random;
+    private Color blockColor;
+    private Color[] availableColors;
 
     public GameBoard(int height, int width) {
         this.height = height;
@@ -20,6 +23,9 @@ public class GameBoard {
         this.posX = width / 2;
         this.posY = height - 2;
         this.random = new Random();
+        this.availableColors = new Color[]{
+            Color.BLUE, Color.WHITE
+        };
     }
 
     public int getHeight() {
@@ -28,6 +34,10 @@ public class GameBoard {
 
     public int getWidth() {
         return this.width;
+    }
+
+    public Color getColor() {
+        return this.blockColor;
     }
 
     public boolean[][] getBoard() {
@@ -90,6 +100,7 @@ public class GameBoard {
     public Block createRandom() {
         int i = random.nextInt(7);
         Block created = new Block(Tetrominoes.values()[i]);
+        this.blockColor = availableColors[random.nextInt(availableColors.length)];
         this.posX = width / 2;
         this.posY = height - 2;
         return created;

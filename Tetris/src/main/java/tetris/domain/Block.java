@@ -22,7 +22,7 @@ public class Block {
     public int[][] getCoordinates() {
         return this.currentCoords;
     }
-
+    
     public void setX(int i, int x) {
         currentCoords[i][0] = x;
     }

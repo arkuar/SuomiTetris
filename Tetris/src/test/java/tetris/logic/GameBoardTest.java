@@ -206,4 +206,10 @@ public class GameBoardTest {
             }
         }
     }
+    
+    @Test
+    public void colorIsSet() {
+        b.createRandom();
+        assertNotNull(b.getColor());
+    }
 }
