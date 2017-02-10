@@ -8,6 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import tetris.logic.GameBoard;
 
+/**
+ * Luokka tarjoaa käyttöliittymän pelille.
+ *
+ * @author Arttu
+ */
 public class UserInterface implements Runnable {
 
     private JFrame frame;
@@ -15,6 +20,11 @@ public class UserInterface implements Runnable {
     private int height, width;
     private GamePanel gamepanel;
 
+    /**
+     * Luo uuden käyttöliittymän parametrina annetulle pelille.
+     *
+     * @param game peli.
+     */
     public UserInterface(GameBoard game) {
         this.game = game;
     }

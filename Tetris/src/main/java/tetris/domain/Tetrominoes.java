@@ -1,5 +1,10 @@
 package tetris.domain;
 
+/**
+ * Luokka sisältää kaikki tetrominot koordinaatteineen.
+ *
+ * @author Arttu
+ */
 public enum Tetrominoes {
     I(new int[][]{{0, -1}, {0, 0}, {0, 1}, {0, 2}}),
     O(new int[][]{{0, 0}, {1, 0}, {0, 1}, {1, 1}}),
@@ -9,9 +14,8 @@ public enum Tetrominoes {
     S(new int[][]{{-1, 0}, {0, 0}, {0, -1}, {1, -1}}),
     Z(new int[][]{{-1, -1}, {0, -1}, {0, 0}, {1, 0}}),
     EMPTY(new int[][]{{0, 0}, {0, 0}, {0, 0}, {0, 0}});
-    
-    //Sisältää tetrominon alkuperäiset koordinaatit. EI SAA MUUTTAA!
-    public int[][] coordinates;
+
+    private int[][] coordinates;
 
     Tetrominoes(int[][] coordinates) {
         this.coordinates = coordinates;

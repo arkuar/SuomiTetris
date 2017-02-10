@@ -5,11 +5,21 @@ import java.awt.event.KeyListener;
 import tetris.domain.Block;
 import tetris.logic.GameBoard;
 
+/**
+ * Luokka tarjoaa toiminnallisuuden liikkumiselle.
+ *
+ * @author Arttu
+ */
 public class ButtonListener implements KeyListener {
 
     private GameBoard board;
     private Block block;
 
+    /**
+     * Luo uuden ButtonListener -olion.
+     * @param board Annettu pelilauta.
+     * @param block Annettu Block -olio.
+     */
     public ButtonListener(GameBoard board, Block block) {
         this.board = board;
         this.block = block;

@@ -1,5 +1,10 @@
 package tetris.domain;
 
+/**
+ * Luokka tarjoaa toiminnallisuuden tetrominopalikoille.
+ *
+ * @author Arttu
+ */
 public class Block {
 
     private Tetrominoes tetromino;
@@ -10,6 +15,12 @@ public class Block {
         this.currentCoords = new int[4][2];
     }
 
+    /**
+     * Luo uuden Block -olion joka sisältää tetrominon ja sen nykyiset
+     * koordinaatit.
+     *
+     * @param tetromino Käyttäjän antama tetromino.
+     */
     public Block(Tetrominoes tetromino) {
         this.tetromino = tetromino;
         currentCoords = tetromino.getCoords();
@@ -22,7 +33,7 @@ public class Block {
     public int[][] getCoordinates() {
         return this.currentCoords;
     }
-    
+
     public void setX(int i, int x) {
         currentCoords[i][0] = x;
     }
@@ -39,6 +50,9 @@ public class Block {
         return currentCoords[i][1];
     }
 
+    /**
+     * Kääntää tetrominoa vasemmalle ja tallentaa uudet koordinaatit.
+     */
     public void rotateLeft() {
         if (tetromino == Tetrominoes.O) {
             return;
@@ -52,6 +66,9 @@ public class Block {
         currentCoords = rotated.currentCoords;
     }
 
+    /**
+     * Kääntää tetrominoa oikealle ja tallentaa uudet koordinaatit.
+     */
     public void rotateRight() {
         if (tetromino == Tetrominoes.O) {
             return;
