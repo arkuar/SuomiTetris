@@ -9,4 +9,5 @@ Päivä | Tunnit | Kuvaus
 01.02.2017 | 1h | Pelilaudalle lisätty metodeja ja testejä
 02.02.2017 | 1h | Pelilogiikkaan lisäyksiä ja testejä
 03.03.2017 | 2h | Lisää testejä sekä pit ja checkstyle raportit. Luokkakaavion päivitys.
+10.02.2017 | 3h | Käyttöliittymän tekeminen aloitettu. JavaDoc aloitettu.
 ... | ... | ...
