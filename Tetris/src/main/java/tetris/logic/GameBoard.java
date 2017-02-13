@@ -35,7 +35,7 @@ public class GameBoard {
         this.posY = height - 2;
         this.random = new Random();
         this.availableColors = new Color[]{
-            Color.BLUE, Color.WHITE
+            new Color(0, 53, 128), Color.WHITE
         };
     }
 

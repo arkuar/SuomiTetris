@@ -22,7 +22,7 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         GameBoard b = new GameBoard(22, 10);
-        UserInterface ui = new UserInterface(b);
+        UserInterface ui = new UserInterface(b, 22);
         SwingUtilities.invokeLater(ui);
     }
 

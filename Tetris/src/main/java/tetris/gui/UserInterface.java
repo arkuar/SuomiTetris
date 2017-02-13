@@ -3,6 +3,7 @@ package tetris.gui;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
@@ -19,20 +20,26 @@ public class UserInterface implements Runnable {
     private GameBoard game;
     private int height, width;
     private GamePanel gamepanel;
+    private int blockSize;
 
     /**
      * Luo uuden käyttöliittymän parametrina annetulle pelille.
      *
      * @param game peli.
+     * @param blockSize Palikan koko
      */
-    public UserInterface(GameBoard game) {
+    public UserInterface(GameBoard game, int blockSize) {
         this.game = game;
+        this.blockSize = blockSize;
     }
 
     @Override
     public void run() {
         frame = new JFrame("SuomiTetris");
-        frame.setPreferredSize(new Dimension(250, 500));
+        int width = (game.getWidth() + 1) * blockSize;
+        int height = (game.getHeight() + 2) * blockSize;
+        frame.setPreferredSize(new Dimension(width, height));
+        frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         createComponents(frame.getContentPane());
 
@@ -42,7 +49,7 @@ public class UserInterface implements Runnable {
     }
 
     private void createComponents(Container container) {
-        this.gamepanel = new GamePanel(game);
+        this.gamepanel = new GamePanel(game, blockSize);
         container.add(gamepanel);
     }
 
