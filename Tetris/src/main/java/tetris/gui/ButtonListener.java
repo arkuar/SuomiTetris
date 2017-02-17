@@ -37,7 +37,7 @@ public class ButtonListener implements KeyListener {
     public void keyPressed(KeyEvent ke) {
         Block c = new Block(block.getTetromino());
         c.setCoordinates(block.getCoordinates());
-        
+
         if (ke.getKeyCode() == KeyEvent.VK_UP) {
             c.rotateLeft();
             if (board.canRotate(c)) {

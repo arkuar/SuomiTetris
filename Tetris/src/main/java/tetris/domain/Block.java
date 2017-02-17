@@ -12,6 +12,9 @@ public class Block {
     private Tetrominoes tetromino;
     private int[][] currentCoords;
 
+    /**
+     * Luo tyhjän Block -olion.
+     */
     public Block() {
         this.tetromino = Tetrominoes.EMPTY;
         this.currentCoords = new int[4][2];
@@ -35,23 +38,52 @@ public class Block {
     public int[][] getCoordinates() {
         return this.currentCoords;
     }
-    
+
+    /**
+     * Asettaa koordinaatit Block -oliolle.
+     *
+     * @param coordinates Annetut koordinaatit.
+     */
     public void setCoordinates(int[][] coordinates) {
         this.currentCoords = coordinates;
     }
 
+    /**
+     * Asettaa indeksin x -koordinaatin.
+     *
+     * @param i indeksinumero.
+     * @param x uusi x -koordinaatti.
+     */
     public void setX(int i, int x) {
         currentCoords[i][0] = x;
     }
 
+    /**
+     * Palauttaa annetun indeksin x -koordinaatin.
+     *
+     * @param i indeksinumero.
+     * @return x -koordinaatti.
+     */
     public int getX(int i) {
         return currentCoords[i][0];
     }
 
+    /**
+     * Asettaa indeksin y -koordinaatin.
+     *
+     * @param i indeksinumero
+     * @param y uusi y -koordinaatti.
+     */
     public void setY(int i, int y) {
         currentCoords[i][1] = y;
     }
 
+    /**
+     * Palauttaa indeksin y -koordinaatin.
+     *
+     * @param i indeksinumero.
+     * @return y -koordinaatti.
+     */
     public int getY(int i) {
         return currentCoords[i][1];
     }
@@ -87,5 +119,5 @@ public class Block {
         }
         setCoordinates(rotated.currentCoords);
     }
-    
+
 }

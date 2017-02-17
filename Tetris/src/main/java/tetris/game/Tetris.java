@@ -13,6 +13,7 @@ import tetris.gui.Refreshable;
 import tetris.logic.GameBoard;
 
 /**
+ * Peliä pyörittävä luokka.
  *
  * @author Arttu
  */
@@ -26,6 +27,12 @@ public class Tetris extends Timer implements ActionListener {
     private boolean cont;
     private boolean stopped;
 
+    /**
+     * Luo pelin annetuilla mitoilla.
+     *
+     * @param height pelilaudan korkeus.
+     * @param width pelilaudan leveys.
+     */
     public Tetris(int height, int width) {
         super(1000, null);
         this.width = width;
@@ -76,10 +83,10 @@ public class Tetris extends Timer implements ActionListener {
         if (!this.cont) {
             return;
         } else {
-            if(!gameboard.moveDown(current)) {
+            if (!gameboard.moveDown(current)) {
                 stopped = true;
             }
-            
+
             if (stopped) {
                 setCurrent(gameboard.createRandom());
                 this.stopped = false;
