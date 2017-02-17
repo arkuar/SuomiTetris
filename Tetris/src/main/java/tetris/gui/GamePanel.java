@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Graphics;
 import tetris.domain.Block;
+import tetris.game.Tetris;
 import tetris.logic.GameBoard;
 
 /**
@@ -13,7 +14,7 @@ import tetris.logic.GameBoard;
  */
 public class GamePanel extends JPanel implements Refreshable {
 
-    private GameBoard game;
+    private Tetris game;
     private Block current;
     private int blockSize;
 
@@ -23,11 +24,11 @@ public class GamePanel extends JPanel implements Refreshable {
      * @param game Annettu pelilauta.
      * @param blockSize Palikan koko.
      */
-    public GamePanel(GameBoard game, int blockSize) {
+    public GamePanel(Tetris game, int blockSize) {
         super();
         this.game = game;
         this.blockSize = blockSize;
-        this.current = game.createRandom();
+        this.current = null;
         setBackground(Color.DARK_GRAY);
     }
     
@@ -35,10 +36,11 @@ public class GamePanel extends JPanel implements Refreshable {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         int fromTop = this.getHeight() - game.getHeight() * blockSize;
+        this.current = game.getCurrent();
         for (int i = 0; i < 4; i++) {
             int x = game.getX() + current.getX(i);
             int y = game.getY() - current.getY(i);
-            paintBlock(g, x * blockSize, fromTop + (game.getHeight() - y - 1) * blockSize, game.getColor());
+            paintBlock(g, x * blockSize, fromTop + (game.getHeight() - y - 1) * blockSize, game.getBoard().getColor());
         }
     }
 
@@ -49,7 +51,7 @@ public class GamePanel extends JPanel implements Refreshable {
 
     @Override
     public void refresh() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        repaint();
     }
-
+    
 }

@@ -23,6 +23,7 @@ public class GameBoardTest {
 
     GameBoard b;
     Block c;
+    Block e;
 
     public GameBoardTest() {
 
@@ -40,6 +41,7 @@ public class GameBoardTest {
     public void setUp() {
         b = new GameBoard(10, 10);
         c = new Block(Tetrominoes.I);
+        e = new Block(Tetrominoes.I);
     }
 
     @After
@@ -55,7 +57,7 @@ public class GameBoardTest {
     public void creatingBoardWorks() {
         assertEquals(10, b.getHeight());
         assertEquals(10, b.getWidth());
-        assertEquals(5, b.getX());
+        assertEquals(6, b.getX());
         assertEquals(8, b.getY());
     }
 
@@ -104,23 +106,21 @@ public class GameBoardTest {
     @Test
     public void movingLeftWorks() {
         b.moveLeft(c);
-        assertEquals(4, b.getX());
+        assertEquals(5, b.getX());
     }
 
     @Test
     public void movingLeftWorks2() {
-        b.moveLeft(c);
-        b.moveLeft(c);
-        b.moveLeft(c);
-        b.moveLeft(c);
-        b.moveLeft(c);
+        for (int i = 0; i < 6; i++) {
+            b.moveLeft(c);
+        }
         assertEquals(0, b.getX());
     }
 
     @Test
     public void movingLeftWorksWithDifferentBlock() {
         Block a = new Block(Tetrominoes.O);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             b.moveLeft(a);
         }
         assertEquals(0, b.getX());
@@ -137,7 +137,7 @@ public class GameBoardTest {
     @Test
     public void movingRightWorks() {
         b.moveRight(c);
-        assertEquals(6, b.getX());
+        assertEquals(7, b.getX());
     }
 
     @Test
@@ -163,7 +163,7 @@ public class GameBoardTest {
     public void randomCreateWorks() {
         Block e = b.createRandom();
         assertNotEquals(e, Tetrominoes.EMPTY);
-        assertEquals(5, b.getX());
+        assertEquals(6, b.getX());
         assertEquals(8, b.getY());
         assertEquals(e.getClass(), c.getClass());
     }
@@ -172,10 +172,10 @@ public class GameBoardTest {
     public void stoppingWorks() {
         boolean[][] board = b.getBoard();
         b.blockStopped(c);
-        assertEquals(true, board[9][5]);
-        assertEquals(true, board[8][5]);
-        assertEquals(true, board[7][5]);
-        assertEquals(true, board[6][5]);
+        assertEquals(true, board[9][6]);
+        assertEquals(true, board[8][6]);
+        assertEquals(true, board[7][6]);
+        assertEquals(true, board[6][6]);
     }
 
     @Test
@@ -198,6 +198,42 @@ public class GameBoardTest {
     }
 
     @Test
+    public void rotationCheck() {
+        c.rotateLeft();
+        e.rotateRight();
+        boolean result = b.canRotate(c);
+        boolean result2 = b.canRotate(e);
+        assertEquals(true, result);
+        assertEquals(true, result2);
+    }
+
+    @Test
+    public void cantRotateOutFromLeft() {
+        for (int i = 0; i < 6; i++) {
+            b.moveLeft(c);
+        }
+        c.rotateLeft();
+        e.rotateRight();
+        boolean result = b.canRotate(c);
+        boolean result2 = b.canRotate(e);
+        assertEquals(false, result);
+        assertEquals(false, result2);
+    }
+
+    @Test
+    public void cantRotateOutFromRight() {
+        for (int i = 0; i < 6; i++) {
+            b.moveRight(c);
+        }
+        c.rotateLeft();
+        e.rotateRight();
+        boolean result = b.canRotate(c);
+        boolean result2 = b.canRotate(e);
+        assertEquals(false, result);
+        assertEquals(false, result2);
+    }
+
+    @Test
     public void lineFullCheck() {
         b.removeLine();
         for (int i = 0; i < 10; i++) {
@@ -206,7 +242,7 @@ public class GameBoardTest {
             }
         }
     }
-    
+
     @Test
     public void colorIsSet() {
         b.createRandom();

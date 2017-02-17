@@ -17,7 +17,6 @@ public class GameBoard {
     private int posX;
     private int posY;
     private boolean[][] board;
-    private Random random;
     private Color blockColor;
     private Color[] availableColors;
 
@@ -31,9 +30,8 @@ public class GameBoard {
         this.height = height;
         this.width = width;
         this.board = new boolean[height][width];
-        this.posX = width / 2;
+        this.posX = width / 2 + 1;
         this.posY = height - 2;
-        this.random = new Random();
         this.availableColors = new Color[]{
             new Color(0, 53, 128), Color.WHITE
         };
@@ -86,18 +84,37 @@ public class GameBoard {
     }
 
     /**
+     * Tarkistaa voiko annettua palikkaa kääntää.
+     *
+     * @param block Annettu Block -olio.
+     * @return tosi jos kääntäminen mahdollista.
+     */
+    public boolean canRotate(Block block) {
+        for (int i = 0; i < 4; i++) {
+            int x = posX + block.getX(i);
+            int y = posY - block.getY(i);
+            if (!canMove(x, y)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
      * Liikuttaa Block -oliota alaspäin pelilaudalla.
      *
      * @param block Block -olio jota halutaan siirtää.
+     * @return Palauttaa tosi jos liikkuminen onnistui.
      */
-    public void moveDown(Block block) {
+    public boolean moveDown(Block block) {
         for (int i = 0; i < 4; i++) {
             int y = posY - block.getY(i);
             if (!canMove(posX, y - 1)) {
-                return;
+                return false;
             }
         }
         posY--;
+        return true;
     }
 
     /**
@@ -136,10 +153,10 @@ public class GameBoard {
      * @return luotu Block -olio.
      */
     public Block createRandom() {
-        int i = random.nextInt(7);
-        Block created = new Block(Tetrominoes.values()[i]);
-        this.blockColor = availableColors[random.nextInt(availableColors.length)];
-        this.posX = width / 2;
+        Random r = new Random();
+        Block created = new Block(Tetrominoes.values()[r.nextInt(7)]);
+        this.blockColor = availableColors[r.nextInt(availableColors.length)];
+        this.posX = width / 2 + 1;
         this.posY = height - 2;
         return created;
     }

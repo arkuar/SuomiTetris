@@ -1,5 +1,7 @@
 package tetris.domain;
 
+import tetris.logic.GameBoard;
+
 /**
  * Luokka tarjoaa toiminnallisuuden tetrominopalikoille.
  *
@@ -33,6 +35,10 @@ public class Block {
     public int[][] getCoordinates() {
         return this.currentCoords;
     }
+    
+    public void setCoordinates(int[][] coordinates) {
+        this.currentCoords = coordinates;
+    }
 
     public void setX(int i, int x) {
         currentCoords[i][0] = x;
@@ -63,7 +69,7 @@ public class Block {
             rotated.setX(i, currentCoords[i][1]);
             rotated.setY(i, -currentCoords[i][0]);
         }
-        currentCoords = rotated.currentCoords;
+        setCoordinates(rotated.currentCoords);
     }
 
     /**
@@ -79,7 +85,7 @@ public class Block {
             rotated.setX(i, -currentCoords[i][1]);
             rotated.setY(i, currentCoords[i][0]);
         }
-        currentCoords = rotated.currentCoords;
+        setCoordinates(rotated.currentCoords);
     }
-
+    
 }

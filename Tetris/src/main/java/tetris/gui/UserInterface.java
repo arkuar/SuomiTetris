@@ -7,7 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.Window;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import tetris.logic.GameBoard;
+import tetris.game.Tetris;
 
 /**
  * Luokka tarjoaa käyttöliittymän pelille.
@@ -17,7 +17,7 @@ import tetris.logic.GameBoard;
 public class UserInterface implements Runnable {
 
     private JFrame frame;
-    private GameBoard game;
+    private Tetris game;
     private int height, width;
     private GamePanel gamepanel;
     private int blockSize;
@@ -28,9 +28,17 @@ public class UserInterface implements Runnable {
      * @param game peli.
      * @param blockSize Palikan koko
      */
-    public UserInterface(GameBoard game, int blockSize) {
+    public UserInterface(Tetris game, int blockSize) {
         this.game = game;
         this.blockSize = blockSize;
+    }
+    
+    public JFrame getFrame() {
+        return this.frame;
+    }
+    
+    public Refreshable getRefreshable() {
+        return this.gamepanel;
     }
 
     @Override
@@ -51,6 +59,8 @@ public class UserInterface implements Runnable {
     private void createComponents(Container container) {
         this.gamepanel = new GamePanel(game, blockSize);
         container.add(gamepanel);
+        ButtonListener listener = new ButtonListener(game, game.getCurrent());
+        frame.addKeyListener(listener);
     }
 
 }
