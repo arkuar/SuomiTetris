@@ -11,4 +11,5 @@ Päivä | Tunnit | Kuvaus
 03.03.2017 | 2h | Lisää testejä sekä pit ja checkstyle raportit. Luokkakaavion päivitys.
 10.02.2017 | 3h | Käyttöliittymän tekeminen aloitettu. JavaDoc aloitettu.
 13.02.2017 | 2h | Käyttöliittymään lisätty tetrominojen piirtämisestä huolehtiva metodi.
+17.02.2017 | 3h | Liikkuminen nuolinäppäimillä ja muuta liikkumiseen liittyvää lisätty.
 ... | ... | ...
