@@ -17,3 +17,17 @@ Pelaaja
 **Luokkakaavio**
 
 ![Luokkakaavio](/Documentation/classdiagram.png)
+
+**Sekvenssikaaviot**
+
+Pelin luominen
+
+![Pelinluonti](/Documentation/pelinluonti.png)
+
+Palikan siirtäminen vasemmalle ja oikealle
+
+![Palikansiirto](/Documentation/liikuttaminen.png)
+
+Palikan kääntäminen vasemmalle ja oikealle
+
+![Palikankääntö](/Documentation/kääntäminen.png)
