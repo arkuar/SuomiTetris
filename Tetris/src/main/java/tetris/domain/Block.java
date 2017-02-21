@@ -101,7 +101,7 @@ public class Block {
             rotated.setX(i, currentCoords[i][1]);
             rotated.setY(i, -currentCoords[i][0]);
         }
-        setCoordinates(rotated.currentCoords);
+        this.currentCoords = rotated.currentCoords;
     }
 
     /**
@@ -117,7 +117,7 @@ public class Block {
             rotated.setX(i, -currentCoords[i][1]);
             rotated.setY(i, currentCoords[i][0]);
         }
-        setCoordinates(rotated.currentCoords);
+        this.currentCoords = rotated.currentCoords;
     }
 
 }

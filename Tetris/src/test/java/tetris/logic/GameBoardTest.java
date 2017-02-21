@@ -170,30 +170,30 @@ public class GameBoardTest {
 
     @Test
     public void stoppingWorks() {
-        boolean[][] board = b.getBoard();
+        int[][] board = b.getBoard();
         b.blockStopped(c);
-        assertEquals(true, board[9][6]);
-        assertEquals(true, board[8][6]);
-        assertEquals(true, board[7][6]);
-        assertEquals(true, board[6][6]);
+        assertEquals(1, board[9][6]);
+        assertEquals(1, board[8][6]);
+        assertEquals(1, board[7][6]);
+        assertEquals(1, board[6][6]);
     }
 
     @Test
     public void cantMoveWhenBlocked() {
         b.blockStopped(c);
-        boolean result = b.canMove(5, 9);
+        boolean result = b.canMove(6, 9);
         assertEquals(false, result);
     }
 
     @Test
     public void removeFullLine() {
         for (int i = 0; i < 10; i++) {
-            b.getBoard()[0][i] = true;
+            b.getBoard()[0][i] = 1;
         }
 
         b.removeLine();
         for (int i = 0; i < 10; i++) {
-            assertEquals(b.getBoard()[0][i], false);
+            assertEquals(0, b.getBoard()[0][i]);
         }
     }
 
@@ -238,7 +238,7 @@ public class GameBoardTest {
         b.removeLine();
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                assertEquals(false, b.getBoard()[i][j]);
+                assertEquals(0, b.getBoard()[i][j]);
             }
         }
     }

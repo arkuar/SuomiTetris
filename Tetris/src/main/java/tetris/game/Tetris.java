@@ -34,7 +34,7 @@ public class Tetris extends Timer implements ActionListener {
      * @param width pelilaudan leveys.
      */
     public Tetris(int height, int width) {
-        super(1000, null);
+        super(400, null);
         this.width = width;
         this.height = height;
         this.gameboard = new GameBoard(height, width);
@@ -43,7 +43,6 @@ public class Tetris extends Timer implements ActionListener {
         this.stopped = false;
 
         addActionListener(this);
-        setInitialDelay(1000);
     }
 
     public int getHeight() {
@@ -85,12 +84,16 @@ public class Tetris extends Timer implements ActionListener {
         } else {
             if (!gameboard.moveDown(current)) {
                 stopped = true;
+                gameboard.blockStopped(current);
             }
 
             if (stopped) {
+                gameboard.removeLine();
+                
                 setCurrent(gameboard.createRandom());
                 this.stopped = false;
             }
+
             refreshable.refresh();
         }
     }

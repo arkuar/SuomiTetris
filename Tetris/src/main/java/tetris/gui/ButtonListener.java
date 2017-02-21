@@ -53,6 +53,7 @@ public class ButtonListener implements KeyListener {
         } else if (ke.getKeyCode() == KeyEvent.VK_RIGHT) {
             board.moveRight(block);
         }
+        block = game.getCurrent();
     }
 
     @Override

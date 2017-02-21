@@ -16,9 +16,10 @@ public class GameBoard {
     private final int width;
     private int posX;
     private int posY;
-    private boolean[][] board;
+    private int[][] board;
     private Color blockColor;
     private Color[] availableColors;
+    public int colornumber;
 
     /**
      * Luo uuden pelilaudan annetuilla mitoilla.
@@ -29,9 +30,10 @@ public class GameBoard {
     public GameBoard(int height, int width) {
         this.height = height;
         this.width = width;
-        this.board = new boolean[height][width];
+        this.board = new int[height][width];
         this.posX = width / 2 + 1;
         this.posY = height - 2;
+        this.colornumber = 1;
         this.availableColors = new Color[]{
             new Color(0, 53, 128), Color.WHITE
         };
@@ -40,7 +42,7 @@ public class GameBoard {
     public int getHeight() {
         return this.height;
     }
-
+    
     public int getWidth() {
         return this.width;
     }
@@ -49,7 +51,7 @@ public class GameBoard {
         return this.blockColor;
     }
 
-    public boolean[][] getBoard() {
+    public int[][] getBoard() {
         return this.board;
     }
 
@@ -72,12 +74,9 @@ public class GameBoard {
         if (x < 0 || x >= width || y < 0 || y >= height) {
             return false;
         }
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (board[i][j] == true) {
-                    return false;
-                }
-            }
+
+        if (board[y][x] != 0) {
+            return false;
         }
 
         return true;
@@ -90,6 +89,10 @@ public class GameBoard {
      * @return tosi jos kääntäminen mahdollista.
      */
     public boolean canRotate(Block block) {
+        if(block.getTetromino() == Tetrominoes.O) {
+            return false;
+        }
+        
         for (int i = 0; i < 4; i++) {
             int x = posX + block.getX(i);
             int y = posY - block.getY(i);
@@ -108,8 +111,9 @@ public class GameBoard {
      */
     public boolean moveDown(Block block) {
         for (int i = 0; i < 4; i++) {
+            int x = posX + block.getX(i);
             int y = posY - block.getY(i);
-            if (!canMove(posX, y - 1)) {
+            if (!canMove(x, y - 1)) {
                 return false;
             }
         }
@@ -155,7 +159,9 @@ public class GameBoard {
     public Block createRandom() {
         Random r = new Random();
         Block created = new Block(Tetrominoes.values()[r.nextInt(7)]);
-        this.blockColor = availableColors[r.nextInt(availableColors.length)];
+        this.colornumber = r.nextInt(availableColors.length);
+        this.blockColor = availableColors[colornumber];
+        this.colornumber++;
         this.posX = width / 2 + 1;
         this.posY = height - 2;
         return created;
@@ -170,13 +176,13 @@ public class GameBoard {
         for (int i = 0; i < 4; i++) {
             int x = posX + block.getX(i);
             int y = posY - block.getY(i);
-            board[y][x] = true;
+            board[y][x] = this.colornumber;
         }
     }
 
     private boolean lineIsFull(int i) {
         for (int j = 0; j < width; j++) {
-            if (board[i][j] == false) {
+            if (board[i][j] == 0) {
                 return false;
             }
         }
@@ -190,9 +196,19 @@ public class GameBoard {
         for (int i = 0; i < height; i++) {
             if (lineIsFull(i)) {
                 for (int k = 0; k < width; k++) {
-                    board[i][k] = false;
+                    board[i][k] = 0;
                 }
+                moveAllDownOne(i);
             }
+        }
+    }
+
+    private void moveAllDownOne(int i) {
+        for (int j = i; j < height - 1; j++) {
+            for (int k = 0; k < width; k++) {
+                board[j][k] = board[j + 1][k];
+            }
+            
         }
     }
 }
