@@ -12,4 +12,5 @@ Päivä | Tunnit | Kuvaus
 10.02.2017 | 3h | Käyttöliittymän tekeminen aloitettu. JavaDoc aloitettu.
 13.02.2017 | 2h | Käyttöliittymään lisätty tetrominojen piirtämisestä huolehtiva metodi.
 17.02.2017 | 3h | Liikkuminen nuolinäppäimillä ja muuta liikkumiseen liittyvää lisätty.
+21.02.2017 | 2h | Liikkumisen hienosäätöä. Peli pääosin valmis.
 ... | ... | ...
