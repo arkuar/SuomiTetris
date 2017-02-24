@@ -234,6 +234,20 @@ public class GameBoardTest {
     }
 
     @Test
+    public void canRotateTest() {
+        Block block = new Block(Tetrominoes.L);
+        boolean result = b.canRotate(block);
+        assertEquals(true, result);
+    }
+    
+    @Test
+    public void rotationFalseWhenSquare() {
+        Block sq = new Block(Tetrominoes.O);
+        boolean result = b.canRotate(sq);
+        assertEquals(false, result);
+    }
+
+    @Test
     public void lineFullCheck() {
         b.removeLine();
         for (int i = 0; i < 10; i++) {
@@ -244,8 +258,36 @@ public class GameBoardTest {
     }
 
     @Test
+    public void multipleLinesFull() {
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 10; j++) {
+                b.getBoard()[i][j] = 1;
+            }
+        }
+        
+        b.removeLine();
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 10; j++) {
+                assertEquals(0, b.getBoard()[i][j]);          
+            }
+        }
+    }
+
+    @Test
     public void colorIsSet() {
         b.createRandom();
         assertNotNull(b.getColor());
+    }
+
+    @Test
+    public void creatingNewGameWorks() {
+        b.newGame();
+        for (int i = 0; i < b.getHeight(); i++) {
+            for (int j = 0; j < b.getWidth(); j++) {
+                assertEquals(0, b.getBoard()[i][j]);
+            }
+        }
+        assertEquals(6, b.getX());
+        assertEquals(8, b.getY());
     }
 }
