@@ -37,12 +37,12 @@ public class ButtonListener implements KeyListener {
     public void keyPressed(KeyEvent ke) {
         Block c = new Block(block.getTetromino());
         c.setCoordinates(block.getCoordinates());
-        
-        if(ke.getKeyChar()== 'p') {
+
+        if (ke.getKeyChar() == 'p') {
             game.pause();
         }
-        
-        if(game.stopped) {
+
+        if (game.stopped) {
             return;
         }
 
@@ -51,12 +51,14 @@ public class ButtonListener implements KeyListener {
                 c.rotateLeft();
                 if (board.canRotate(c)) {
                     block.rotateLeft();
-                }   break;
+                }
+                break;
             case KeyEvent.VK_DOWN:
                 c.rotateRight();
                 if (board.canRotate(c)) {
                     block.rotateRight();
-                }   break;
+                }
+                break;
             case KeyEvent.VK_LEFT:
                 board.moveLeft(block);
                 break;

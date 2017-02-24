@@ -62,6 +62,7 @@ public class GameBoard {
     public int getY() {
         return posY;
     }
+
     /**
      * Alustaa pelilaudan ja asettaa x- ja y-koordinaatit.
      */
@@ -211,7 +212,7 @@ public class GameBoard {
                 moveAllDownOne(i);
             }
         }
-        if(full) {
+        if (full) {
             removeLine();
         }
     }

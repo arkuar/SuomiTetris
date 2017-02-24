@@ -88,9 +88,8 @@ public class Block {
         return currentCoords[i][1];
     }
 
-    /* Kääntää Block -oliota vasemmalle ja tallentaa uudet koordinaatit.
-     *
-     * @param block Käännettävä Block -olio.
+    /**
+     * Kääntää tetrominoa vasemmalle ja tallentaa uudet koordinaatit.
      */
     public void rotateLeft() {
         if (this.tetromino == Tetrominoes.O) {
@@ -108,8 +107,6 @@ public class Block {
 
     /**
      * Kääntää tetrominoa oikealle ja tallentaa uudet koordinaatit.
-     *
-     * @param block Käännettävä Block -olio.
      */
     public void rotateRight() {
         if (this.tetromino == Tetrominoes.O) {

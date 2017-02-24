@@ -31,24 +31,23 @@ public class GamePanel extends JPanel implements Refreshable {
         this.current = null;
         setBackground(Color.DARK_GRAY);
     }
-    
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         int fromTop = this.getHeight() - game.getHeight() * blockSize;
         int[][] board = game.getBoard().getBoard();
-        
+
         for (int i = 0; i < game.getHeight(); i++) {
             for (int j = 0; j < game.getWidth(); j++) {
-                if(board[i][j] == 1) {
+                if (board[i][j] == 1) {
                     paintBlock(g, j * blockSize, fromTop + (game.getHeight() - i - 1) * blockSize, new Color(0, 53, 128));
-                } else if(board[i][j] == 2) {
+                } else if (board[i][j] == 2) {
                     paintBlock(g, j * blockSize, fromTop + (game.getHeight() - i - 1) * blockSize, Color.WHITE);
                 }
             }
         }
-        
-        
+
         this.current = game.getCurrent();
         for (int i = 0; i < 4; i++) {
             int x = game.getX() + current.getX(i);
@@ -64,10 +63,10 @@ public class GamePanel extends JPanel implements Refreshable {
 
     @Override
     public void refresh() {
-        if(!game.cont) {
+        if (!game.cont) {
             JOptionPane.showMessageDialog(this, "Game Over");
         }
         repaint();
     }
-    
+
 }

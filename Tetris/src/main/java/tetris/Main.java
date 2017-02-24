@@ -26,8 +26,8 @@ public class Main {
             }
         }
 
-       game.setRefreshable(ui.getRefreshable());
-      game.start();
+        game.setRefreshable(ui.getRefreshable());
+        game.start();
     }
 
 }
