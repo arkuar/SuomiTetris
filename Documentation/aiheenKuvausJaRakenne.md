@@ -14,9 +14,14 @@ Pelaaja
 - nimimerkin lisääminen highscore -taulukkoon
  * onnistuu jos käyttäjä on saanut pisteitä tarpeeksi
  
+**Rakennekuvaus**
+
+Ohjelma koostuu tällä hetkellä kahdeksasta eri luokasta joista tärkeimpiä pelin logiikan kannalta ovat GameBoard ja Block. Nämä luokat hoitavat tetrominopalikoiden siirtämisen ja kääntämisen. Piirtopuolesta vastaa GamePanel luokka ja näppäinkomennoista ButtonListener -luokka. Tetrominoes -luokka sisältää kaikkien seitsemän tetrominopalikan koordinaatit joita Block -luokka hyödyntää.
+ 
 **Luokkakaavio**
 
 ![Luokkakaavio](/Documentation/classdiagram.png)
+
 
 **Sekvenssikaaviot**
 
