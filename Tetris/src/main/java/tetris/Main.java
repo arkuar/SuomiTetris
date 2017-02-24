@@ -20,14 +20,14 @@ public class Main {
 
         while (ui.getRefreshable() == null) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1);
             } catch (Exception e) {
                 System.out.println("Gameboard not drawn yet.");
             }
         }
 
-        game.setRefreshable(ui.getRefreshable());
-        game.start();
+       game.setRefreshable(ui.getRefreshable());
+      game.start();
     }
 
 }

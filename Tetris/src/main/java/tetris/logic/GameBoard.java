@@ -42,7 +42,7 @@ public class GameBoard {
     public int getHeight() {
         return this.height;
     }
-    
+
     public int getWidth() {
         return this.width;
     }
@@ -61,6 +61,14 @@ public class GameBoard {
 
     public int getY() {
         return posY;
+    }
+    /**
+     * Alustaa pelilaudan ja asettaa x- ja y-koordinaatit.
+     */
+    public void newGame() {
+        this.board = new int[height][width];
+        this.posX = width / 2 + 1;
+        this.posY = height - 2;
     }
 
     /**
@@ -89,10 +97,10 @@ public class GameBoard {
      * @return tosi jos kääntäminen mahdollista.
      */
     public boolean canRotate(Block block) {
-        if(block.getTetromino() == Tetrominoes.O) {
+        if (block.getTetromino() == Tetrominoes.O) {
             return false;
         }
-        
+
         for (int i = 0; i < 4; i++) {
             int x = posX + block.getX(i);
             int y = posY - block.getY(i);
@@ -193,13 +201,18 @@ public class GameBoard {
      * Poistaa pelilaudalta täynnä olevat rivit.
      */
     public void removeLine() {
+        boolean full = false;
         for (int i = 0; i < height; i++) {
             if (lineIsFull(i)) {
+                full = true;
                 for (int k = 0; k < width; k++) {
                     board[i][k] = 0;
                 }
                 moveAllDownOne(i);
             }
+        }
+        if(full) {
+            removeLine();
         }
     }
 
@@ -208,7 +221,7 @@ public class GameBoard {
             for (int k = 0; k < width; k++) {
                 board[j][k] = board[j + 1][k];
             }
-            
+
         }
     }
 }

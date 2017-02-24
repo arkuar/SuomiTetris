@@ -3,9 +3,10 @@ package tetris.gui;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Window;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.WindowConstants;
 import tetris.game.Tetris;
 
@@ -58,9 +59,22 @@ public class UserInterface implements Runnable {
 
     private void createComponents(Container container) {
         this.gamepanel = new GamePanel(game, blockSize);
+        createMenu(gamepanel);
         container.add(gamepanel);
         ButtonListener listener = new ButtonListener(game, game.getCurrent());
         frame.addKeyListener(listener);
+    }
+    
+    private void createMenu(GamePanel panel) {
+        JMenuBar bar = new JMenuBar();
+        JMenu menugame = new JMenu("Game");
+        JMenuItem newGame = new JMenuItem("New Game");
+        newGame.addActionListener((ae) -> {
+            game.newGame();
+        });
+        menugame.add(newGame);
+        bar.add(menugame);
+        frame.setJMenuBar(bar);
     }
 
 }

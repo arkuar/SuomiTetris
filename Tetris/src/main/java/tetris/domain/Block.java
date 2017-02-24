@@ -88,36 +88,40 @@ public class Block {
         return currentCoords[i][1];
     }
 
-    /**
-     * Kääntää tetrominoa vasemmalle ja tallentaa uudet koordinaatit.
+    /* Kääntää Block -oliota vasemmalle ja tallentaa uudet koordinaatit.
+     *
+     * @param block Käännettävä Block -olio.
      */
     public void rotateLeft() {
-        if (tetromino == Tetrominoes.O) {
+        if (this.tetromino == Tetrominoes.O) {
             return;
         }
-        Block rotated = new Block();
-        rotated.tetromino = tetromino;
+        int[][] rotated = new int[4][2];
+        int[][] current = getCoordinates();
         for (int i = 0; i < 4; i++) {
-            rotated.setX(i, currentCoords[i][1]);
-            rotated.setY(i, -currentCoords[i][0]);
+            rotated[i][0] = current[i][1];
+            rotated[i][1] = -current[i][0];
         }
-        this.currentCoords = rotated.currentCoords;
+
+        setCoordinates(rotated);
     }
 
     /**
      * Kääntää tetrominoa oikealle ja tallentaa uudet koordinaatit.
+     *
+     * @param block Käännettävä Block -olio.
      */
     public void rotateRight() {
-        if (tetromino == Tetrominoes.O) {
+        if (this.tetromino == Tetrominoes.O) {
             return;
         }
-        Block rotated = new Block();
-        rotated.tetromino = tetromino;
+        int[][] rotated = new int[4][2];
+        int[][] current = getCoordinates();
         for (int i = 0; i < 4; i++) {
-            rotated.setX(i, -currentCoords[i][1]);
-            rotated.setY(i, currentCoords[i][0]);
+            rotated[i][0] = -current[i][1];
+            rotated[i][1] = current[i][0];
         }
-        this.currentCoords = rotated.currentCoords;
-    }
 
+        setCoordinates(rotated);
+    }
 }

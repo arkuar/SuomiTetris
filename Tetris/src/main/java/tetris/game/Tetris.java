@@ -24,8 +24,8 @@ public class Tetris extends Timer implements ActionListener {
     private Refreshable refreshable;
     private GameBoard gameboard;
     private Block current;
-    private boolean cont;
-    private boolean stopped;
+    public boolean cont;
+    public boolean stopped;
 
     /**
      * Luo pelin annetuilla mitoilla.
@@ -42,7 +42,7 @@ public class Tetris extends Timer implements ActionListener {
         this.cont = true;
         this.stopped = false;
 
-        addActionListener(this);
+        super.addActionListener(this);
     }
 
     public int getHeight() {
@@ -77,25 +77,43 @@ public class Tetris extends Timer implements ActionListener {
         this.refreshable = r;
     }
 
+    /**
+     * Luo uuden pelin.
+     */
+    public void newGame() {
+        this.gameboard.newGame();
+        this.current = gameboard.createRandom();
+        this.cont = true;
+        this.stopped = false;
+        refreshable.refresh();
+        super.start();
+    }
+
+    /**
+     * Pysäyttää pelin tai jatkaa sitä riippuen tilasta.
+     */
+    public void pause() {
+        if (!stopped) {
+            stopped = true;
+            super.stop();
+        } else {
+            stopped = false;
+            super.start();
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (!this.cont) {
-            return;
-        } else {
-            if (!gameboard.moveDown(current)) {
-                stopped = true;
-                gameboard.blockStopped(current);
+        if (!gameboard.moveDown(current)) {
+            gameboard.blockStopped(current);
+            gameboard.removeLine();
+            setCurrent(gameboard.createRandom());
+            if (!gameboard.canMove(getX(), getY() - 1)) {
+                super.stop();
+                this.cont = false;
             }
-
-            if (stopped) {
-                gameboard.removeLine();
-                
-                setCurrent(gameboard.createRandom());
-                this.stopped = false;
-            }
-
-            refreshable.refresh();
         }
+        refreshable.refresh();
     }
 
 }
