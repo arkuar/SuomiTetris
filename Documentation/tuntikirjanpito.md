@@ -13,4 +13,5 @@ Päivä | Tunnit | Kuvaus
 13.02.2017 | 2h | Käyttöliittymään lisätty tetrominojen piirtämisestä huolehtiva metodi.
 17.02.2017 | 3h | Liikkuminen nuolinäppäimillä ja muuta liikkumiseen liittyvää lisätty.
 21.02.2017 | 2h | Liikkumisen hienosäätöä. Peli pääosin valmis.
+03.03.2017 | 4h | Lisätty peliin pisteytys sekä tehty gameloop timerin tilalle.
 ... | ... | ...
