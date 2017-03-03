@@ -7,9 +7,11 @@ package tetris.game;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Timer;
+import javafx.scene.Parent;
+import javax.swing.JLabel;
 import tetris.domain.Block;
 import tetris.gui.Refreshable;
+import tetris.gui.UserInterface;
 import tetris.logic.GameBoard;
 
 /**
@@ -17,7 +19,7 @@ import tetris.logic.GameBoard;
  *
  * @author Arttu
  */
-public class Tetris extends Timer implements ActionListener {
+public class Tetris extends GameLoop implements ActionListener {
 
     private int width;
     private int height;
@@ -26,6 +28,8 @@ public class Tetris extends Timer implements ActionListener {
     private Block current;
     public boolean cont;
     public boolean stopped;
+    private int score;
+    private int nextLevelScore;
 
     /**
      * Luo pelin annetuilla mitoilla.
@@ -34,15 +38,14 @@ public class Tetris extends Timer implements ActionListener {
      * @param width pelilaudan leveys.
      */
     public Tetris(int height, int width) {
-        super(400, null);
         this.width = width;
         this.height = height;
         this.gameboard = new GameBoard(height, width);
         this.current = gameboard.createRandom();
         this.cont = true;
         this.stopped = false;
-
-        super.addActionListener(this);
+        this.score = 0;
+        this.nextLevelScore = 1000;
     }
 
     public int getHeight() {
@@ -51,6 +54,10 @@ public class Tetris extends Timer implements ActionListener {
 
     public int getWidth() {
         return this.width;
+    }
+
+    public int getScore() {
+        return this.score;
     }
 
     public int getX() {
@@ -85,34 +92,56 @@ public class Tetris extends Timer implements ActionListener {
         this.current = gameboard.createRandom();
         this.cont = true;
         this.stopped = false;
+        this.score = 0;
         refreshable.refresh();
-        super.start();
+        this.nextLevelScore = 500;
+        resume();
     }
 
     /**
      * Pysäyttää pelin tai jatkaa sitä riippuen tilasta.
      */
     public void pause() {
-        if (!stopped) {
+        if (!stopped && cont) {
             stopped = true;
-            super.stop();
-        } else {
+            pauseUpdates();
+        } else if (stopped && cont) {
             stopped = false;
-            super.start();
+            resume();
         }
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        draw();
+    }
+
+    /**
+     * Päivittää pelitilanteen.
+     */
+    @Override
+    public void updateGame() {
+        if (score >= nextLevelScore) {
+            increaseSpeed();
+            nextLevelScore *= 2;
+        }
         if (!gameboard.moveDown(current)) {
             gameboard.blockStopped(current);
             gameboard.removeLine();
+            score += 100 * gameboard.getRemoved();
             setCurrent(gameboard.createRandom());
             if (!gameboard.canMove(getX(), getY() - 1)) {
-                super.stop();
                 this.cont = false;
+                pauseUpdates();
             }
         }
+    }
+
+    /**
+     * Piirtää päivitettävän piirtoalustan uudestaan.
+     */
+    @Override
+    public void draw() {
         refreshable.refresh();
     }
 

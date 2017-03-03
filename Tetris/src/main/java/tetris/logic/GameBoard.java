@@ -18,8 +18,9 @@ public class GameBoard {
     private int posY;
     private int[][] board;
     private Color blockColor;
-    private Color[] availableColors;
+    private final Color[] availableColors;
     public int colornumber;
+    private int removed;
 
     /**
      * Luo uuden pelilaudan annetuilla mitoilla.
@@ -37,6 +38,7 @@ public class GameBoard {
         this.availableColors = new Color[]{
             new Color(0, 53, 128), Color.WHITE
         };
+        this.removed = 0;
     }
 
     public int getHeight() {
@@ -45,6 +47,10 @@ public class GameBoard {
 
     public int getWidth() {
         return this.width;
+    }
+
+    public int getRemoved() {
+        return this.removed;
     }
 
     public Color getColor() {
@@ -173,6 +179,7 @@ public class GameBoard {
         this.colornumber++;
         this.posX = width / 2 + 1;
         this.posY = height - 2;
+        removed = 0;
         return created;
     }
 
@@ -206,6 +213,7 @@ public class GameBoard {
         for (int i = 0; i < height; i++) {
             if (lineIsFull(i)) {
                 full = true;
+                removed++;
                 for (int k = 0; k < width; k++) {
                     board[i][k] = 0;
                 }

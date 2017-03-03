@@ -3,6 +3,10 @@ package tetris.gui;
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import tetris.domain.Block;
 import tetris.game.Tetris;
@@ -17,6 +21,7 @@ public class GamePanel extends JPanel implements Refreshable {
     private Tetris game;
     private Block current;
     private int blockSize;
+    private JLabel scorebar;
 
     /**
      * Luo pelinäkymän annetulle pelilaudalle.
@@ -30,6 +35,10 @@ public class GamePanel extends JPanel implements Refreshable {
         this.blockSize = blockSize;
         this.current = null;
         setBackground(Color.DARK_GRAY);
+    }
+
+    public void setScorebar(JLabel bar) {
+        this.scorebar = bar;
     }
 
     @Override
@@ -64,8 +73,13 @@ public class GamePanel extends JPanel implements Refreshable {
     @Override
     public void refresh() {
         if (!game.cont) {
-            JOptionPane.showMessageDialog(this, "Game Over");
+            JOptionPane.showMessageDialog(this, "Game Over \n Your score: " + String.valueOf(game.getScore()));
         }
+        try {
+            this.scorebar.setText("Score: " + String.valueOf(game.getScore()));
+        } catch (Exception e) {
+        }
+
         repaint();
     }
 

@@ -104,6 +104,20 @@ public class GameBoardTest {
     }
 
     @Test
+    public void movingDownReturnsCorrectly() {
+        b.moveDown(c);
+        b.moveDown(c);
+        b.moveDown(c);
+        boolean resutl1 = b.moveDown(c);
+        assertEquals(true, resutl1);
+        b.moveDown(c);
+        b.moveDown(c);
+        b.moveDown(c);
+        boolean result2 = b.moveDown(c);
+        assertEquals(false, result2);
+    }
+
+    @Test
     public void movingLeftWorks() {
         b.moveLeft(c);
         assertEquals(5, b.getX());
@@ -235,11 +249,12 @@ public class GameBoardTest {
 
     @Test
     public void canRotateTest() {
-        Block block = new Block(Tetrominoes.L);
+        Block block = new Block(Tetrominoes.S);
+        block.rotateLeft();
         boolean result = b.canRotate(block);
         assertEquals(true, result);
     }
-    
+
     @Test
     public void rotationFalseWhenSquare() {
         Block sq = new Block(Tetrominoes.O);
@@ -264,11 +279,11 @@ public class GameBoardTest {
                 b.getBoard()[i][j] = 1;
             }
         }
-        
+
         b.removeLine();
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 10; j++) {
-                assertEquals(0, b.getBoard()[i][j]);          
+                assertEquals(0, b.getBoard()[i][j]);
             }
         }
     }
@@ -289,5 +304,22 @@ public class GameBoardTest {
         }
         assertEquals(6, b.getX());
         assertEquals(8, b.getY());
+    }
+
+    @Test
+    public void removedIsZero() {
+        assertEquals(0, b.getRemoved());
+    }
+
+    @Test
+    public void removedIncreasesIfFullLines() {
+        for (int i = 0; i < 1; i++) {
+            for (int j = 0; j < 10; j++) {
+                b.getBoard()[i][j] = 1;
+            }
+        }
+        
+        b.removeLine();
+        assertEquals(1, b.getRemoved());
     }
 }

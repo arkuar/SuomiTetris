@@ -1,10 +1,12 @@
 package tetris;
 
 import javax.swing.SwingUtilities;
-import tetris.logic.GameBoard;
-import tetris.domain.*;
+import tetris.*;
+import tetris.domain.Block;
+import tetris.domain.Tetrominoes;
 import tetris.game.Tetris;
 import tetris.gui.UserInterface;
+import tetris.logic.GameBoard;
 
 public class Main {
 
@@ -20,14 +22,14 @@ public class Main {
 
         while (ui.getRefreshable() == null) {
             try {
-                Thread.sleep(1);
-            } catch (Exception e) {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
                 System.out.println("Gameboard not drawn yet.");
             }
         }
 
         game.setRefreshable(ui.getRefreshable());
-        game.start();
+        game.run();
     }
 
 }
