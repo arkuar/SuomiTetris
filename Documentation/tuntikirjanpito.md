@@ -14,4 +14,4 @@ Päivä | Tunnit | Kuvaus
 17.02.2017 | 3h | Liikkuminen nuolinäppäimillä ja muuta liikkumiseen liittyvää lisätty.
 21.02.2017 | 2h | Liikkumisen hienosäätöä. Peli pääosin valmis.
 03.03.2017 | 4h | Lisätty peliin pisteytys sekä tehty gameloop timerin tilalle.
-... | ... | ...
+05.03.2017 | 3h | Projektin viimeistelyä.
