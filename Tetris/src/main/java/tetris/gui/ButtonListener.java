@@ -21,9 +21,8 @@ public class ButtonListener implements KeyListener {
      * Luo uuden ButtonListener -olion.
      *
      * @param board Annettu pelilauta.
-     * @param block Annettu Block -olio.
      */
-    public ButtonListener(Tetris board, Block block) {
+    public ButtonListener(Tetris board) {
         this.board = board.getBoard();
         this.block = board.getCurrent();
         this.game = board;

@@ -66,7 +66,7 @@ public class UserInterface implements Runnable {
         this.gamepanel = new GamePanel(game, blockSize);
         createMenu(gamepanel);
         container.add(gamepanel);
-        ButtonListener listener = new ButtonListener(game, game.getCurrent());
+        ButtonListener listener = new ButtonListener(game);
         frame.addKeyListener(listener);
     }
     
