@@ -83,7 +83,7 @@ public class GameBoard {
      *
      * @param x Annettu x-koordinaatti.
      * @param y Annettu y-koordinaatti.
-     * @return tosi jos liikkuminen mahdollista, false jos ei.
+     * @return true jos liikkuminen mahdollista, false jos ei.
      */
     public boolean canMove(int x, int y) {
         if (x < 0 || x >= width || y < 0 || y >= height) {
@@ -101,7 +101,7 @@ public class GameBoard {
      * Tarkistaa voiko annettua palikkaa kääntää.
      *
      * @param block Annettu Block -olio.
-     * @return tosi jos kääntäminen mahdollista.
+     * @return true jos kääntäminen mahdollista.
      */
     public boolean canRotate(Block block) {
         if (block.getTetromino() == Tetrominoes.O) {
@@ -122,7 +122,7 @@ public class GameBoard {
      * Liikuttaa Block -oliota alaspäin pelilaudalla.
      *
      * @param block Block -olio jota halutaan siirtää.
-     * @return Palauttaa tosi jos liikkuminen onnistui.
+     * @return Palauttaa true jos liikkuminen onnistui.
      */
     public boolean moveDown(Block block) {
         for (int i = 0; i < 4; i++) {

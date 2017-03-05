@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tetris.game;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javafx.scene.Parent;
-import javax.swing.JLabel;
 import tetris.domain.Block;
 import tetris.gui.Refreshable;
-import tetris.gui.UserInterface;
 import tetris.logic.GameBoard;
 
 /**

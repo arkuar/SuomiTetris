@@ -20,7 +20,6 @@ public class UserInterface implements Runnable {
     
     private JFrame frame;
     private Tetris game;
-    private int height, width;
     private GamePanel gamepanel;
     private int blockSize;
     private JLabel scorebar;

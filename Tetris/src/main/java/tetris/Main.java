@@ -1,12 +1,8 @@
 package tetris;
 
 import javax.swing.SwingUtilities;
-import tetris.*;
-import tetris.domain.Block;
-import tetris.domain.Tetrominoes;
 import tetris.game.Tetris;
 import tetris.gui.UserInterface;
-import tetris.logic.GameBoard;
 
 public class Main {
 

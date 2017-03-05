@@ -1,7 +1,5 @@
 package tetris.domain;
 
-import tetris.logic.GameBoard;
-
 /**
  * Luokka tarjoaa toiminnallisuuden tetrominopalikoille.
  *

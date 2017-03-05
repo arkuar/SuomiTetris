@@ -5,7 +5,6 @@
  */
 package tetris.logic;
 
-import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -318,7 +317,7 @@ public class GameBoardTest {
                 b.getBoard()[i][j] = 1;
             }
         }
-        
+
         b.removeLine();
         assertEquals(1, b.getRemoved());
     }
