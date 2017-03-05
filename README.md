@@ -8,6 +8,10 @@ Tetris suomalaisella teemalla.
 
 [Käyttöohjeet](https://github.com/arkuar/SuomiTetris/blob/master/Documentation/k%C3%A4ytt%C3%B6ohjeet.md)
 
+[Testausdokumentaatio](https://github.com/arkuar/SuomiTetris/blob/master/Documentation/testausdokumentaatio.md)
+
+[JavaDoc](https://htmlpreview.github.io/?https://github.com/arkuar/SuomiTetris/blob/master/Javadoc/index.html)
+
 [Pit-raportti](https://htmlpreview.github.io/?https://github.com/arkuar/SuomiTetris/blob/master/Documentation/pit/index.html)
 
 [Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/arkuar/SuomiTetris/blob/master/Documentation/site/checkstyle.html)
