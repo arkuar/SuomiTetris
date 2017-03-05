@@ -1,22 +1,19 @@
 # Aihe: SuomiTetris
 
-**Kuvaus:** Toteutetaan tavallinen Tetrispeli jossa on teemana Suomi. Teeman voisi sisällyttää peliin mm. sinivalkoisia palikoita
-tai lisäämällä taustamusiikiksi jotain suomalaista musiikkia. Muuten peli on perinteinen Tetris. Peli tulee sisältämään Highscore -taulukon 
-johon pelaaja voi päästä saamalla tarpeeksi hyvät pisteet.
+**Kuvaus:** Toteutetaan tavallinen Tetrispeli jossa on teemana Suomi. Teeman voisi toteuttaa käyttämällä vain sinivalkoisia palikoita
+tai lisäämällä taustamusiikiksi jotain suomalaista musiikkia. Muuten peli on perinteinen Tetris. 
 
 **Käyttäjät:**
 Pelaaja
 
 **Kaikkien käyttäjien toiminnot:**
 - pelin aloittaminen
+- pelin pelaaminen
 - pelin lopettaminen
-- highscore -taulukon katsominen
-- nimimerkin lisääminen highscore -taulukkoon
- * onnistuu jos käyttäjä on saanut pisteitä tarpeeksi
  
 **Rakennekuvaus**
 
-Ohjelma koostuu tällä hetkellä kahdeksasta eri luokasta joista tärkeimpiä pelin logiikan kannalta ovat GameBoard ja Block. Nämä luokat hoitavat tetrominopalikoiden siirtämisen ja kääntämisen. Piirtopuolesta vastaa GamePanel luokka ja näppäinkomennoista ButtonListener -luokka. Tetrominoes -luokka sisältää kaikkien seitsemän tetrominopalikan koordinaatit joita Block -luokka hyödyntää.
+Ohjelma koostuu tällä hetkellä yhdeksästä eri luokasta joista tärkeimpiä pelin logiikan kannalta ovat GameBoard ja Block. Nämä luokat hoitavat tetrominopalikoiden siirtämisen ja kääntämisen. Piirtopuolesta vastaa GamePanel luokka ja näppäinkomennoista ButtonListener -luokka. Tetrominoes -luokka sisältää kaikkien seitsemän tetrominopalikan koordinaatit joita Block -luokka hyödyntää. GameLoop -luokka vastaa pelin ajankulusta.
  
 **Luokkakaavio**
 
